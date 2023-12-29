@@ -11,3 +11,6 @@ INSERT INTO example_database.todo_list (content) VALUES ("My third important ite
 INSERT INTO example_database.todo_list (content) VALUES ("and this only one too");
 
 SELECT * FROM example_database.todo_list;
+
+
+![Alt text](database.png)
