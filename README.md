@@ -7,7 +7,7 @@ This guide provides step-by-step instructions on setting up a LEMP (Linux, Nginx
 Date: Monday, December 18, 2023
 Time: 10:46 PM
 
-Step 1: Setting Up Nginx
+**Step 1: Setting Up Nginx**
 
 1. Create an Ubuntu instance with the specifications: t2medium, allowing SSH and HTTP traffic.
 
@@ -30,7 +30,7 @@ curl http://localhost:80
 
 7. Test access from the internet using your public IP address.
 
-Step 2: Installing MySQL
+**Step 2: Installing MySQL**
 
 1. Install MySQL:
 
@@ -48,13 +48,13 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'PassWord
 exit
 sudo mysql_secure_installation
 
-Step 3: Installing PHP
+**Step 3: Installing PHP**
 
 1. Install PHP and required modules:
 
 sudo apt install php-fpm php-mysql
 
-Step 4: Configuring Nginx for PHP
+**Step 4: Configuring Nginx for PHP**
 
 1. Create a directory for your project:
 
@@ -115,7 +115,7 @@ sudo sh -c "echo 'Hello LEMP from hostname $(curl -s http://169.254.169.254/late
 
 11. Test your website in the browser using your public IP address.
 
-Step 5: Testing PHP with Nginx
+**Step 5: Testing PHP with Nginx**
 
 1. Create a test PHP file:
 
@@ -134,7 +134,7 @@ http://<Public-DNS-Name>:80/info.php
 
 sudo rm -rf /var/www/projectLEMP/info.php
 
-Step 6: Retrieving Data from MySQL Database with PHP
+****Step 6: Retrieving Data from MySQL Database with PHP****
 
 1. Connect to MySQL console:
 
@@ -190,7 +190,7 @@ try {
     die();
 }
 
-7. Access the page in your browser:
+**7. Access the page in your browser:**
 
 http://<Public_domain_or_IP>/todo_list.php
 
