@@ -54,7 +54,7 @@ sudo rm /var/www/your_domain/info.php
 
 CREATE DATABASE example_database;
 
-CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'PassWord.2';
+CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';
 
 GRANT ALL ON example_database.* TO 'example_user'@'%';
 
