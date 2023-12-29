@@ -199,4 +199,5 @@ http://<Public_domain_or_IP>/todo_list.php
 
 sudo rm -rf /var/www/projectLEMP/todo_list.php
 
+
 Your LEMP stack is now set up and ready for hosting PHP applications with a MySQL database.
