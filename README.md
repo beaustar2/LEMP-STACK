@@ -7,50 +7,64 @@ Date: Monday, December 18, 2023
 Time: 10:46 PM
 
 Step 1: Setting Up Nginx
+
 1. Create an Ubuntu instance with the specifications: t2medium, allowing SSH and HTTP traffic.
 
 2. After instance creation, stop it and navigate to "Actions" > "Instance setting" > "Modify metadata options" > "Optional" and save.
 
 3. Open a terminal and run the following commands:
+
 sudo apt update
 sudo apt install nginx
 
 4. Confirm the installation when prompted.
 
 5. Verify Nginx installation:
+
 sudo systemctl status nginx
 
 6. Check local access:
+
 curl http://localhost:80
 
 7. Test access from the internet using your public IP address.
 
 Step 2: Installing MySQL
+
 1. Install MySQL:
+
 sudo apt install mysql-server
 
 2. Confirm installation when prompted.
 
 3. Log in to MySQL console:
+
 sudo mysql
 
 4. Set root password and run security script:
+
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';
 exit
 sudo mysql_secure_installation
 
 Step 3: Installing PHP
+
 1. Install PHP and required modules:
+
 sudo apt install php-fpm php-mysql
 
 Step 4: Configuring Nginx for PHP
+
 1. Create a directory for your project:
+
 sudo mkdir /var/www/projectLEMP
 
 2. Set ownership:
+
 sudo chown -R $USER:$USER /var/www/projectLEMP
 
 3. Open Nginx configuration file:
+
 sudo nano /etc/nginx/sites-available/projectLEMP
 
 4. Paste the following configuration:
@@ -79,15 +93,19 @@ server {
 5. Save and close the file.
 
 6. Activate the configuration:
+
 sudo ln -s /etc/nginx/sites-available/projectLEMP /etc/nginx/sites-enabled/
 
 7. Test configuration:
+
 sudo nginx -t
 
 8. Disable default Nginx host:
+
 sudo unlink /etc/nginx/sites-enabled/default
 
 9. Reload Nginx:
+
 sudo systemctl reload nginx
 
 10. Create a test index.html file:
@@ -99,33 +117,43 @@ sudo sh -c "echo 'Hello LEMP from hostname $(curl -s http://169.254.169.254/late
 Step 5: Testing PHP with Nginx
 
 1. Create a test PHP file:
+
 sudo nano /var/www/projectLEMP/info.php
 
 2. Add the following content:
+
 <?php
 phpinfo();
 
 3. Access the page in your browser:
+
 http://<Public-DNS-Name>:80/info.php
 
 4. Remove the test PHP file:
+
 sudo rm -rf /var/www/projectLEMP/info.php
 
 Step 6: Retrieving Data from MySQL Database with PHP
+
 1. Connect to MySQL console:
+
 sudo mysql -p
 
 2. Create a new database:
+
 sudo mysql -u root -p -e "CREATE DATABASE example_database;"
 
 3. Create a new user and grant privileges:
+
 mysql> CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'PassWord.2';
 mysql> GRANT ALL ON example_database.* TO 'example_user'@'%';
 
 4. Test the new user:
+
 mysql -u example_user -p
 
 5. Create a test table and insert data:
+
 CREATE TABLE example_database.todo_list (
     item_id INT AUTO_INCREMENT,
     content VARCHAR(255),
@@ -140,6 +168,7 @@ INSERT INTO example_database.todo_list (content) VALUES ("and this only one too"
 SELECT * FROM example_database.todo_list;
 
 6. Create a PHP script to retrieve data:
+
 sudo nano /var/www/projectLEMP/todo_list.php
 
 <?php
@@ -161,9 +190,11 @@ try {
 }
 
 7. Access the page in your browser:
+
 http://<Public_domain_or_IP>/todo_list.php
 
 8. Clean up:
+
 sudo rm -rf /var/www/projectLEMP/todo_list.php
 
 Your LEMP stack is now set up and ready for hosting PHP applications with a MySQL database.
