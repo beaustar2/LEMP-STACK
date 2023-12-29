@@ -1,7 +1,8 @@
 # LEMP-STACK
 LEMP Stack Setup Guide
 
-Introduction
+**Introduction**
+
 This guide provides step-by-step instructions on setting up a LEMP (Linux, Nginx, MySQL, PHP) stack on an Ubuntu 20.04 instance in the cloud. Follow these instructions to create a web server capable of hosting PHP applications with a MySQL database.
 
 Date: Monday, December 18, 2023
